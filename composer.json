@@ -9,10 +9,7 @@
         }
     ],
     "homepage": "https://github.com/saverty/errors_handling",
-    "keywords": ["Laravel", "feedback"],
-    "require": {
-        "illuminate/support": "~5"
-    },
+    "keywords": ["Laravel", "errors", "handling", "errors handling"],
     "autoload": {
         "psr-4": {
             "Saverty\\ErrorsHandling\\": "src/"
