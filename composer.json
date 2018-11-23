@@ -1,0 +1,36 @@
+{
+    "name": "saverty/errors_handling",
+    "description": ":description",
+    "license": "license",
+    "authors": [
+        {
+            "name": "Steve Averty",
+            "email": "steve.averty1992@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/saverty/errors_handling",
+    "keywords": ["Laravel", "feedback"],
+    "require": {
+        "illuminate/support": "~5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Saverty\\ErrorsHandling\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Saverty\\ErrorsHandling\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Saverty\\ErrorsHandling\\ErrorsHandlingServiceProvider"
+            ],
+            "aliases": {
+                "feedback": "Saverty\\ErrorsHandling\\Facades\\Feedback"
+            }
+        }
+    }
+}
