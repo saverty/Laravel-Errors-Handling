@@ -1,57 +1,30 @@
-# feedback
+# Laravel Errors Handling
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
+Laravel Errors Handling allow you to manage errors codes. Sometimes HTTP status aren't enought. With this package you can create your own status with a short description to share it with your team.
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+# Installation
+**Install the package using composer**
 
-## Installation
+    composer require saverty/errors_handling
 
-Via Composer
+**Publish the configuration**
 
-``` bash
-$ composer require saverty/feedback
-```
+    php artisan vendor:publish --provider="Saverty\ErrorsHandling\ErrorsHandlingServiceProvider" --tag="config"
 
-## Usage
+**Go to your app.php and add the provider**
 
-## Change log
+    "providers"[
+		...
+	    Saverty\ErrorsHandling\ErrorsHandlingServiceProvider::class,
+	]
 
-Please see the [changelog](changelog.md) for more information on what has changed recently.
 
-## Testing
+## Add your codes
 
-``` bash
-$ composer test
-```
+Go to errors_handling.php config file and follow the example. Your codes can be grouped by category. 
+Each code needs a code, a name and a description
 
-## Contributing
+## Your documentation
 
-Please see [contributing.md](contributing.md) for details and a todolist.
+You can see the all your codes at this url : {your_domain}/errorshandling
 
-## Security
-
-If you discover any security related issues, please email author email instead of using the issue tracker.
-
-## Credits
-
-- [author name][link-author]
-- [All Contributors][link-contributors]
-
-## License
-
-license. Please see the [license file](license.md) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/saverty/feedback.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/saverty/feedback.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/saverty/feedback/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
-
-[link-packagist]: https://packagist.org/packages/saverty/feedback
-[link-downloads]: https://packagist.org/packages/saverty/feedback
-[link-travis]: https://travis-ci.org/saverty/feedback
-[link-styleci]: https://styleci.io/repos/12345678
-[link-author]: https://github.com/saverty
-[link-contributors]: ../../contributors]
