@@ -32,24 +32,15 @@ trait ErrorsHandlingTrait
     }
 
     /**
-     * Get Error instance
-     * Return the instance error using the code
-     * @param $code
-     * @return ErrorsHandling::class
-     */
-    public static function error($code){
-        $error = self::getError($code);
-        return new self($error, $code);
-    }
-
-    /**
      * Transform error to array
      * @return array
      */
     public function toArray(){
-        return [
-            $this->code => $this->error
-        ];
+        $result = [];
+        foreach ($this->errors as $code => $err){
+            $result[$code] = $err;
+        }
+        return $result;
     }
 
     /**
@@ -58,5 +49,31 @@ trait ErrorsHandlingTrait
      */
     public function toJson(){
         return json_encode($this->toArray());
+    }
+
+    /**
+     * Check if the error is already registred
+     * @param $code
+     * @return bool
+     */
+    public function errorIsSet($code){
+        foreach ($this->errors as $c => $e){
+            if($c == $code){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Add an error
+     * @param $code
+     * @return $this
+     */
+    public function add($code){
+        if(!$this->errorIsSet($code)){
+            $this->errors[$code] =  $this->getError($code);
+        }
+        return $this;
     }
 }
