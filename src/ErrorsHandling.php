@@ -7,18 +7,16 @@ class ErrorsHandling
 {
     use ErrorsHandlingTrait;
 
-    public $error;
-    public $code;
+    public $errors;
 
     /**
      * ErrorsHandling constructor.
      * @param $error
      * @param $code
      */
-    public function __construct($error, $code)
+    public function __construct()
     {
-        $this->error = $error;
-        $this->code = $code;
+        $this->errors = [];
     }
 
 

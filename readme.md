@@ -24,18 +24,22 @@ Laravel Errors Handling allow you to manage errors codes. Sometimes HTTP status 
 Go to errors_handling.php config file and follow the example. Your codes can be grouped by category. 
 Each code needs a code, a name and a description
 
-## Return the code in the response
+
 **Use the package**
 
     use Saverty\ErrorsHandling\ErrorsHandling;
     
 **Return the code error**
+
+    $errors = new ErrorsHandling();
+    
+    $errors->add("AUTH001")->add("AUTH002")->add("AUTH002");
     
     return response()->json([
-                "codeErrors" => ErrorsHandling::error("AUTH001")
-            ], 400);
+       "codeErrors" => $errors->toArray()
+       ]
+    );
     
-
 
 ## Your documentation
 
