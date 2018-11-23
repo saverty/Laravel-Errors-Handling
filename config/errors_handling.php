@@ -1,15 +1,18 @@
 <?php
 
-return [
 /*
+ * Example
+ * */
+return [
+    /*
     "Authentification" => [
         "AUTH001" => [
-            "name" => "Login Fail"
+            "name" => "Login Fail",
             "description" => "When the user fail to login"
         ],
-        "AUTH002 => [
-            "name => "Register Fail",
-            "register" => "Credentials are wrongs"
+        "AUTH002" => [
+            "name" => "Register Fail",
+            "description" => "Credentials are wrongs"
         ]
     ],
     "User" => [
@@ -18,5 +21,5 @@ return [
             "description" => "Cannot find the user with this ID"
         ]
     ]
- */
+    */
 ];
