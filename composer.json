@@ -1,6 +1,6 @@
 {
     "name": "saverty/errors_handling",
-    "description": ":description",
+    "description": "Laravel Errors Handling allow you to manage errors codes. Sometimes HTTP status aren't enought. With this package you can create your own status with a short description to share it with your team.",
     "license": "MIT",
     "authors": [
         {
