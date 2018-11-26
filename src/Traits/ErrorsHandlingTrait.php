@@ -76,4 +76,16 @@ trait ErrorsHandlingTrait
         }
         return $this;
     }
+
+    /**
+     * Check if an error is present
+     * @return bool
+     */
+    public function hasErrors(){
+        if(sizeof($this->toArray()) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
