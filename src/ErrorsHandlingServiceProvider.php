@@ -64,6 +64,23 @@ class ErrorsHandlingServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/errors_handling.php' => config_path('errors_handling.php'),
         ], 'errors_handling.config');
-        
+
+        // Publishing the views.
+        /*$this->publishes([
+            __DIR__.'/../resources/views' => base_path('resources/views/vendor/saverty'),
+        ], 'feedback.views');*/
+
+        // Publishing assets.
+        /*$this->publishes([
+            __DIR__.'/../resources/assets' => public_path('vendor/saverty'),
+        ], 'feedback.views');*/
+
+        // Publishing the translation files.
+        /*$this->publishes([
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/saverty'),
+        ], 'feedback.views');*/
+
+        // Registering package commands.
+        // $this->commands([]);
     }
 }
