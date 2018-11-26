@@ -68,12 +68,20 @@ trait ErrorsHandlingTrait
     /**
      * Add an error
      * @param $code
+     * @param null $group
      * @return $this
      */
-    public function add($code){
-        if(!$this->errorIsSet($code)){
-            $this->errors[$code] =  $this->getError($code);
+    public function add($code, $group = null){
+        if(is_null($group)){
+            if(!$this->errorIsSet($code)){
+                $this->errors[$code] =  $this->getError($code);
+            }
+        }else{
+            if(!$this->errorIsSet($code)){
+                $this->errors[$group][$code] =  $this->getError($code);
+            }
         }
+
         return $this;
     }
 
@@ -88,4 +96,5 @@ trait ErrorsHandlingTrait
             return false;
         }
     }
+
 }
