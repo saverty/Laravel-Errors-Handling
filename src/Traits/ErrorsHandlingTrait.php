@@ -97,4 +97,15 @@ trait ErrorsHandlingTrait
         }
     }
 
+    /**
+     * Transform a laravel validator to ErrorsHandling
+     * @param $validator
+     */
+    public function injectValidator($validator){
+        foreach($validator->messages()->messages() as $group => $errors){
+            foreach ($errors as $error){
+                $this->add($error, $group);
+            }
+        }
+    }
 }
