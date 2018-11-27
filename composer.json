@@ -23,10 +23,10 @@
     "extra": {
         "laravel": {
             "providers": [
-               // "Saverty\\ErrorsHandling\\ErrorsHandlingServiceProvider"
+               "Saverty\\ErrorsHandling\\ErrorsHandlingServiceProvider"
             ],
             "aliases": {
-                //"feedback": "Saverty\\ErrorsHandling\\Facades\\Feedback"
+                "errors_headling": "Saverty\\ErrorsHandling\\Facades\\ErrorsHandling"
             }
         }
     }
