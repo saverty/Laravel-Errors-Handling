@@ -91,7 +91,7 @@ trait ErrorsHandlingTrait
      * Check if an error is present
      * @return bool
      */
-    protected function hasErrors(){
+    public function hasErrors(){
         if(sizeof($this->toArray()) > 0){
             return true;
         }else{
