@@ -17,7 +17,7 @@ class ErrorsHandlingServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'errors_handling');
-
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -36,7 +36,6 @@ class ErrorsHandlingServiceProvider extends ServiceProvider
     {
 
         $this->mergeConfigFrom(__DIR__.'/../config/errors_handling.php', 'errors_handling');
-
         // Register the service the package provides.
         $this->app->singleton('errors_handling', function ($app) {
             return new ErrorsHandling;

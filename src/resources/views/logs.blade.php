@@ -17,21 +17,15 @@
     <thead class="thead-dark">
     <tr>
         <th scope="col">Code</th>
-        <th scope="col">Category</th>
-        <th scope="col">Name</th>
-        <th scope="col">Description</th>
+        <th scope="col">Date</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($data['errors'] as $key=>$error)
-        @foreach($data['errors'][$key] as $c => $err)
-            <tr>
-                <th>{{$c}}</th>
-                <td>{{$key}}</td>
-                <td>{{$err['name']}}</td>
-                <td>{{$err['description']}}</td>
-            </tr>
-         @endforeach
+    @foreach($data['logs'] as $log)
+        <tr>
+            <th><a href="/errorshandling/errors#{{$log->code}}">{{$log->code}}</a></th>
+            <td>{{$log->created_at}}</td>
+        </tr>
     @endforeach
     </tbody>
 </table>

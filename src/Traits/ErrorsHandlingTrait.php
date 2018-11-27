@@ -2,7 +2,8 @@
 
 namespace Saverty\ErrorsHandling\Traits;
 
-
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 trait ErrorsHandlingTrait
 {
     /**
@@ -82,6 +83,7 @@ trait ErrorsHandlingTrait
             }
         }
 
+        $this->logError($code);
         return $this;
     }
 
@@ -89,7 +91,7 @@ trait ErrorsHandlingTrait
      * Check if an error is present
      * @return bool
      */
-    public function hasErrors(){
+    protected function hasErrors(){
         if(sizeof($this->toArray()) > 0){
             return true;
         }else{
@@ -107,5 +109,70 @@ trait ErrorsHandlingTrait
                 $this->add($error, $group);
             }
         }
+    }
+
+    /**
+     * Log error
+     * @param $code
+     * @return bool
+     */
+    protected function logError($code){
+        $error = self::getError($code);
+        if(key_exists("log", $error)){
+            if($error['log'] == true){
+                DB::table(self::TABLE)->insert(
+                    [
+                        'code' => $code,
+                        'environment' => config('app.env'),
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    ]
+                );
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get all logs as an eloquent instance
+     * @return \Illuminate\Support\Collection
+     */
+    public static function getAllLogs(){
+        return Db::table(self::TABLE)
+            ->select('*')
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+
+    /**
+     * Get errors groups
+     * @return array
+     */
+    public static function getGroups(){
+        $groups = array();
+
+        foreach(self::errors() as $group => $error){
+            array_push($groups, strtolower($group));
+        }
+
+        return $groups;
+    }
+
+    /**
+     * Get errors inside a group
+     * @param $group
+     * @return array
+     */
+    public static function getErrorsGroups($group){
+        $errors = array();
+        foreach (self::errors()[$group] as $key => $error){
+            array_push($errors, [
+                $key => $error
+            ]);
+        }
+
+        return $errors;
+
     }
 }
